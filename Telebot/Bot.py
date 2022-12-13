@@ -23,17 +23,12 @@ def delete(update, context):
     if "abc" in text.lower():
         my_string = find_and_delete(text)
         context.bot.send_message(update.effective_chat.id, my_string)
-        return B
-    else:
-        context.bot.send_message(update.effective_chat.id, "Нет таких слов")
-        return B
+    return B
 
 
 def cancel(update, context):
     context.bot.send_message(update.effective_chat.id, "Прощай")
     return ConversationHandler.END
-
-
 
 
 cancel_handler = CommandHandler("cancel", cancel)
@@ -49,7 +44,6 @@ dispahather.add_handler(conv_handler)
 dispahather.add_handler(cancel_handler)
 dispahather.add_handler(startHandler)
 dispahather.add_handler(deleteHandler)
-
 
 
 updater.start_polling()
